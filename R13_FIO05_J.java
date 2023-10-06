@@ -6,6 +6,6 @@ final class Wrap{
       // Initialize
    }
    public CharBuffer getBufferCopy(){
-      return charBuffer.wrap(dataArray);
+      return charBuffer.wrap(dataArray).asReadOnlyBuffer();
    }
 }

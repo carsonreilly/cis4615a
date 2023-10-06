@@ -1,5 +1,5 @@
 class Base{
-   private final Object lock = new Object();
+  private final Object lock = new Object();
 
   public void doSomething(){
      synchronized(lock){
@@ -11,11 +11,15 @@ class Base{
 class Derived extends Base{
    Logger logger = //Initialize
 
+   private final Object lock = new Object();
+
    @Overide public void doSomething(){
-      try{
-         super.doSomething();
-      }finally {
-         logger.log(Level.FINE, "Did Something");
+      synchronized(lock){
+         try{
+            super.doSomething();
+         }finally {
+            logger.log(Level.FINE, "Did Something");
+         }
       }
    }
 }
